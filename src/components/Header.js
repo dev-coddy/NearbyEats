@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [loginStatus, setLoginStatus] = useState(false);
   const navigate = useNavigate();
+  const onlineStatus = useOnlineStatus();
 
   const handleClick = (path) => {
     navigate(path);
@@ -17,6 +19,7 @@ const Header = () => {
       </div>
       <div className="nav-container">
         <ul className="nav-items">
+          <li>{onlineStatus ? "Online Status : ✅" : "Online Status : ❌"}</li>
           <li onClick={() => handleClick("/")}>Home</li>
           <li>Menu</li>
           <li onClick={() => handleClick("/contact")}>Contact Us</li>
