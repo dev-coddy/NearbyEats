@@ -317,12 +317,6 @@ body {
   color: #777;
 }
 
-.menu-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
 .menu-card {
   /* display: flex; */
   justify-content: space-between;

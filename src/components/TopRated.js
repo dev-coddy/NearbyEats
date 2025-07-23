@@ -1,7 +1,7 @@
 import SearchBar from "./Searchbar";
-// import FilterButton from "./FilterButton";
 import RestaurantCard from "./ResturantCard";
 import Shimmer from "./Shimmer";
+
 import { useState } from "react";
 import { useEffect } from "react";
 import { API_URL } from "../utils/constants";
