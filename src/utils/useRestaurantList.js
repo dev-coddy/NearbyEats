@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { API_URL } from "../utils/constants";
-import useRestaurantMenu from "./useRestaurantMenu";
 
 const useRestaurantList = () => {
   const [restaurantList, setrestaurantList] = useState([]);
@@ -15,6 +14,8 @@ const useRestaurantList = () => {
       const data = await fetch(API_URL);
 
       const json = await data.json();
+
+      console.log(json?.data?.cards[2]?.card?.card);
 
       const restList =
         json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle

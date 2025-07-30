@@ -1,7 +1,7 @@
 const AboutUs = () => {
   return (
-    <div className="about-container">
-      <div className="about-hero">
+    <div className=" text-[#333] p-8 max-w-[1000px] mx-auto bg-white rounded-lg">
+      <div className="text-center mb-8">
         <h1>About FoodDelivery</h1>
         <p>Delivering smiles, one meal at a time!</p>
       </div>

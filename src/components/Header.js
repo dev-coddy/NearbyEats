@@ -13,12 +13,12 @@ const Header = () => {
   };
 
   return (
-    <div className="header">
-      <div className="logo-container">
-        <img className="logo" src={LOGO_URL} />
+    <div className="flex items-center">
+      <div className="w-1/4">
+        <img className="ml-12 h-36" src={LOGO_URL} />
       </div>
-      <div className="nav-container">
-        <ul className="nav-items">
+      <div className="w-3/4 flex items-center justify-around mr-3.5">
+        <ul className=" mx-auto p-2 flex gap-20 cursor-pointer">
           <li>{onlineStatus ? "Online Status : ✅" : "Online Status : ❌"}</li>
           <li onClick={() => handleClick("/")}>Home</li>
           <li>Menu</li>
@@ -26,7 +26,7 @@ const Header = () => {
           <li onClick={() => handleClick("/about")}>About Us</li>
         </ul>
         <button
-          className="login-button"
+          className="px-5 py-2 bg-[#ff6b6b] text-white border-none rounded-full cursor-pointer font-medium transition-colors duration-300 ease-in-out hover:bg-[#ff5252]"
           onClick={() => {
             setLoginStatus(!loginStatus);
           }}

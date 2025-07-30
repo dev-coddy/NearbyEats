@@ -4,6 +4,7 @@ import Shimmer from "./Shimmer";
 
 import { useState } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { API_URL } from "../utils/constants";
 
 const TopRated = () => {
@@ -66,7 +67,13 @@ const TopRated = () => {
         <div className="res-container">
           {filteredRestaurantList.map((restaurant) => {
             return (
-              <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+              <Link
+                className="res-link"
+                key={restaurant.info.id}
+                to={"/restaurants/" + restaurant.info.id}
+              >
+                <RestaurantCard resData={restaurant} />
+              </Link>
             );
           })}
         </div>
