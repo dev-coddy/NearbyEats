@@ -19,6 +19,8 @@ const Body = () => {
     setfilteredRestaurants(restaurantList);
   }, [restaurantList]);
 
+  console.log(filteredRestaurants);
+
   const handleClick = (path) => {
     navigate(path);
   };
