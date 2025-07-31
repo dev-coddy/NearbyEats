@@ -1,5 +1,5 @@
 import SearchBar from "./Searchbar";
-import RestaurantCard from "./ResturantCard";
+import RestaurantCard, { restaurantWithOffer } from "./ResturantCard";
 import Shimmer from "./Shimmer";
 
 import { useState } from "react";
@@ -33,8 +33,9 @@ const Body = () => {
   };
 
   const isOnline = useOnlineStatus();
-
   if (isOnline === false) return <h2>Sorry you are Offline!!</h2>;
+
+  const RestaurantWithOffer = restaurantWithOffer(RestaurantCard);
 
   return (
     <div className="body">
@@ -64,7 +65,12 @@ const Body = () => {
                 key={restaurant.info.id}
                 to={"/restaurants/" + restaurant.info.id}
               >
-                <RestaurantCard resData={restaurant} />
+                {restaurant?.info?.aggregatedDiscountInfoV3?.header &&
+                restaurant?.info?.aggregatedDiscountInfoV3?.subHeader ? (
+                  <RestaurantWithOffer resData={restaurant} />
+                ) : (
+                  <RestaurantCard resData={restaurant} />
+                )}
               </Link>
             );
           })}
