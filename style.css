@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @theme {
   --color-avocado-100: oklch(0.99 0 0);
-  --font-display: "Satoshi", "sans-serif";
+  --font-display: system-ui, sans-serif;
   --breakpoint-3xl: 1920px;
   --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
 }

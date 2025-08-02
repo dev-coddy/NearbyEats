@@ -19,8 +19,6 @@ const Body = () => {
     setfilteredRestaurants(restaurantList);
   }, [restaurantList]);
 
-  console.log(filteredRestaurants);
-
   const handleClick = (path) => {
     navigate(path);
   };
@@ -35,6 +33,7 @@ const Body = () => {
   const isOnline = useOnlineStatus();
   if (isOnline === false) return <h2>Sorry you are Offline!!</h2>;
 
+  // Higher order function :
   const RestaurantWithOffer = restaurantWithOffer(RestaurantCard);
 
   return (
