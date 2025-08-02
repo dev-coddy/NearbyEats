@@ -96,35 +96,47 @@ const NestedItemCategory = (props) => {
         </h3>
       </div>
 
-      {categories.map((categories) => (
-        <div
-          key={categories.title}
-          className="bg-gray-100 py-2 px-2 rounded-lg shadow-sm  cursor-pointer mb-3 "
-          onClick={handleClick}
-        >
-          <div className="flex justify-between">
-            <h3 className="text-md font-bold text-gray-800 flex justify-between mb-4">
-              {categories.title}
-            </h3>
-            {!isOpen ? (
-              <i className="bi bi-chevron-down"></i>
-            ) : (
-              <i className="bi bi-chevron-up"></i>
-            )}
-          </div>
-          {isOpen && (
-            <ul className="space-y-4">
-              {categories.itemCards.map((subcategory) => (
-                <MenuItem
-                  itemInfo={subcategory.card.info}
-                  key={subcategory.card.info.id}
-                />
-              ))}
-            </ul>
-          )}
-        </div>
+      {categories.map((category) => (
+        <ItemSubCategory key={category.title} data={category} />
       ))}
     </>
+  );
+};
+
+const ItemSubCategory = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const { title, itemCards } = props.data;
+
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+  return (
+    <div
+      className="bg-gray-100 py-2 px-2 rounded-lg shadow-sm  cursor-pointer mb-3 "
+      onClick={handleClick}
+    >
+      <div className="flex justify-between">
+        <h3 className="text-md font-bold text-gray-800 flex justify-between mb-4">
+          {title}
+        </h3>
+        {!isOpen ? (
+          <i className="bi bi-chevron-down"></i>
+        ) : (
+          <i className="bi bi-chevron-up"></i>
+        )}
+      </div>
+
+      {isOpen && (
+        <ul className="space-y-4">
+          {itemCards.map((subcategory) => (
+            <MenuItem
+              itemInfo={subcategory.card.info}
+              key={subcategory.card.info.id}
+            />
+          ))}
+        </ul>
+      )}
+    </div>
   );
 };
 
