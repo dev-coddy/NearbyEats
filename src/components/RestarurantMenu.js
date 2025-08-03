@@ -5,6 +5,7 @@ import { useState } from "react";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const [isOpen, setIsOpen] = useState(false);
+  const [showIndex, setShowIndex] = useState(null);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -33,9 +34,16 @@ const RestaurantMenu = () => {
         <p className="text-gray-600">Avg Rating: {avgRating}</p>
       </div>
 
-      {resMenu.map((category) => {
+      {resMenu.map((category, index) => {
         return category.type === "Non Nested" ? (
-          <ItemCategory key={category?.title} data={category} />
+          <ItemCategory
+            key={category?.title}
+            data={category}
+            showItems={index === showIndex ? true : false}
+            setShowIndex={() =>
+              setShowIndex((prevIndex) => (prevIndex === index ? null : index))
+            }
+          />
         ) : (
           <NestedItemCategory key={category?.title} data={category} />
         );
@@ -44,19 +52,19 @@ const RestaurantMenu = () => {
   );
 };
 
-const ItemCategory = (props) => {
-  const { title, itemCards } = props?.data;
-  const [isOpen, setIsOpen] = useState();
+const ItemCategory = ({ data, showItems, setShowIndex }) => {
+  const { title, itemCards } = data;
+  const isOpen = showItems;
 
   const handleClick = () => {
-    setIsOpen(!isOpen);
+    setShowIndex();
   };
 
   return (
     <div className="mb-6">
       <div className=" bg-gray-100 py-5 px-3.5 rounded-lg shadow-lg  cursor-pointer mb-1">
         <h2
-          className="text-xl font-bold text-gray-800 flex justify-between mb-4"
+          className="text-xl font-bold text-gray-800 flex justify-between "
           onClick={handleClick}
         >
           {title} ({itemCards.length})
@@ -82,11 +90,7 @@ const ItemCategory = (props) => {
 
 const NestedItemCategory = (props) => {
   const { title, categories } = props.data;
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
+  const [showIndex, setShowIndex] = useState(null);
 
   return (
     <>
@@ -96,19 +100,26 @@ const NestedItemCategory = (props) => {
         </h3>
       </div>
 
-      {categories.map((category) => (
-        <ItemSubCategory key={category.title} data={category} />
+      {categories.map((category, index) => (
+        <ItemSubCategory
+          key={category.title}
+          data={category}
+          showItem={index === showIndex ? true : false}
+          setShowIndex={() =>
+            setShowIndex((prevIndex) => (prevIndex === index ? null : index))
+          }
+        />
       ))}
     </>
   );
 };
 
-const ItemSubCategory = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const { title, itemCards } = props.data;
+const ItemSubCategory = ({ data, showItem, setShowIndex }) => {
+  const { title, itemCards } = data;
+  const isOpen = showItem;
 
   const handleClick = () => {
-    setIsOpen(!isOpen);
+    setShowIndex();
   };
   return (
     <div
@@ -116,7 +127,7 @@ const ItemSubCategory = (props) => {
       onClick={handleClick}
     >
       <div className="flex justify-between">
-        <h3 className="text-md font-bold text-gray-800 flex justify-between mb-4">
+        <h3 className="text-md font-bold text-gray-800 flex justify-between py-3">
           {title}
         </h3>
         {!isOpen ? (
