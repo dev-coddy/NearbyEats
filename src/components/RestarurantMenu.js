@@ -11,7 +11,7 @@ const RestaurantMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  // custom hook
+  // custom hook to get menu data
   const { resInfo, resMenu } = useRestaurantMenu(resId);
 
   if (resInfo == null)
@@ -155,7 +155,16 @@ const MenuItem = (props) => {
   const RESTAURANT_MENU_IMG =
     "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_240,h_240/";
 
-  const { name, price, defaultPrice, description, imageId } = props?.itemInfo;
+  const {
+    name,
+    price,
+    defaultPrice,
+    description,
+    imageId,
+    ratings: {
+      aggregatedRating: { rating, ratingCountV2 },
+    },
+  } = props?.itemInfo;
   return (
     <div>
       <div className="flex justify-between gap-4 p-4 pb-12 border-gray-200 border-b-2">
@@ -170,6 +179,15 @@ const MenuItem = (props) => {
             <span className="block text-sm text-gray-700">
               Rs {(defaultPrice / 100).toFixed(2)}
             </span>
+          )}
+          {rating && ratingCountV2 && (
+            <div className="flex items-center gap-1">
+              <span>
+                <i className="bi bi-star text-green-800 font-extrabold"></i>
+              </span>
+              <span className="text-green-800 font-bold">{rating}</span>
+              <span className="text-gray-600">({ratingCountV2})</span>
+            </div>
           )}
           {description && (
             <p className="mt-1 text-sm text-gray-600 max-w-[500px]">

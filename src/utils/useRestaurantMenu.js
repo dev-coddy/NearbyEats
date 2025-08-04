@@ -13,16 +13,6 @@ const useRestaurantMenu = (resId) => {
     const data = await fetch(MENU_API + resId + "&catalog_qa=undefined");
     const json = await data.json();
 
-    console.log(
-      json?.data?.cards
-        .find((obj) => obj?.groupedCard)
-        ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
-          (obj) =>
-            obj?.card?.card["@type"]?.includes("ItemCategory") ||
-            obj?.card?.card["@type"]?.includes("NestedItemCategory")
-        )
-    );
-
     const menuData = json.data.cards
       .find((obj) => obj?.groupedCard)
       ?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -30,6 +20,8 @@ const useRestaurantMenu = (resId) => {
           obj?.card?.card["@type"]?.includes("ItemCategory") ||
           obj?.card?.card["@type"]?.includes("NestedItemCategory")
       );
+
+    console.log(menuData);
 
     const organizedMenuData = menuData?.map((item) => {
       const type = item?.card.card["@type"];
