@@ -40,31 +40,25 @@ const TopRated = () => {
 
   return (
     <div className="body">
-      <div className="buttons">
+      <div className="flex justify-between items-center max-w-[800px] mx-auto my-5 gap-0 px-[10px]">
         <SearchBar
           searchInput={searchInput}
           setSearchInput={setSearchInput}
           onSearch={handleSearch}
         />
-        <button
-          className="search-button"
-          // onClick={() => {
-          //   // Filter logic :
-          //   let filteredRest = restaurantList.filter(
-          //     (rest) => rest.info.avgRating > 4.4
-          //   );
-
-          //   // Modify the State Variable :
-          //   setfilteredRestaurants(filteredRest);
-          // }}
-        >
-          Top Rated
-        </button>
+        <button className="search-button">Top Rated</button>
+      </div>
+      <div className="">
+        <input
+          type="text"
+          placeholder="Type something..."
+          className="border border-black px-4 py-2 rounded-md w-[300px]"
+        />
       </div>
       {loading ? (
         <Shimmer />
       ) : (
-        <div className="res-container">
+        <div className="w-[1200px] mx-auto flex flex-wrap gap-[10px]">
           {filteredRestaurantList.map((restaurant) => {
             return (
               <Link

@@ -9,13 +9,24 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import TopRated from "./components/TopRated";
 import RestaurantMenu from "./components/RestarurantMenu";
+import { useEffect, useState } from "react";
+import userContext from "./utils/userContext";
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+  useEffect(() => {
+    // make and api call and give the username and pass word
+    const data = { name: "Talent P Thomas" };
+    setUserName(data.name);
+  }, []);
+
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <userContext.Provider value={{ loggedInUser: userName, setUserName }}>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    </userContext.Provider>
   );
 };
 

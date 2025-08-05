@@ -2,18 +2,23 @@ import SearchBar from "./Searchbar";
 import RestaurantCard, { restaurantWithOffer } from "./ResturantCard";
 import Shimmer from "./Shimmer";
 
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useRestaurantList from "../utils/useRestaurantList";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import userContext from "../utils/userContext";
 
 const Body = () => {
   const [filteredRestaurants, setfilteredRestaurants] = useState([]);
   const { restaurantList, loading } = useRestaurantList();
   const [searchInput, setSearchInput] = useState(" ");
   const navigate = useNavigate();
+
+  const { loggedInUser, setUserName } = useContext(userContext);
+  const updateUserName = (e) => {
+    setUserName(e.target.value);
+  };
 
   useEffect(() => {
     setfilteredRestaurants(restaurantList);
@@ -38,7 +43,7 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="flex justify-between items-center max-w-[800px] mx-auto my-5 gap-0 px-2">
+      <div className="flex justify-between items-center max-w-[800px] mx-auto my-5 gap-4 px-2">
         <SearchBar
           searchInput={searchInput}
           setSearchInput={setSearchInput}
@@ -52,7 +57,17 @@ const Body = () => {
         >
           Top Rated
         </button>
+        <label htmlFor="userName">UserName: </label>
+        <input
+          id="userName"
+          type="text"
+          value={loggedInUser}
+          placeholder="Type something..."
+          className="border border-black px-4 py-2 rounded-md w-[300px]"
+          onChange={updateUserName}
+        />
       </div>
+
       {loading ? (
         <Shimmer />
       ) : (
