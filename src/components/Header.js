@@ -28,7 +28,6 @@ const Header = () => {
         <ul className=" mx-auto p-2 flex gap-20 cursor-pointer">
           <li>{onlineStatus ? "Online Status : ✅" : "Online Status : ❌"}</li>
           <li onClick={() => handleClick("/")}>Home</li>
-          <li>Menu</li>
           <li onClick={() => handleClick("/contact")}>Contact Us</li>
           <li onClick={() => handleClick("/about")}>About Us</li>
           <li onClick={() => handleClick("/cart")}>

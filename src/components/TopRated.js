@@ -46,15 +46,8 @@ const TopRated = () => {
           setSearchInput={setSearchInput}
           onSearch={handleSearch}
         />
-        <button className="search-button">Top Rated</button>
       </div>
-      <div className="">
-        <input
-          type="text"
-          placeholder="Type something..."
-          className="border border-black px-4 py-2 rounded-md w-[300px]"
-        />
-      </div>
+
       {loading ? (
         <Shimmer />
       ) : (
