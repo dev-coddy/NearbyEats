@@ -13,7 +13,7 @@ const RestaurantCard = (props) => {
         alt=""
       />
       <div className="mt-0 p-2">
-        <div className="felx justify-between mb-0">
+        <div className="flex justify-between mb-0">
           <h3 className="mb-0 text-lg font-medium">{name}</h3>
           <h3 className="text-green-600 mb-[2px]">{avgRating}</h3>
         </div>
