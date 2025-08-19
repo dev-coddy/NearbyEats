@@ -29,24 +29,6 @@ It fetches **real-time restaurant and menu data from a live API** and displays t
 
 ---
 
-## 📂 Project Structure
-
-📦 nearbyeats
-┣ 📂 src
-┃ ┣ 📂 components
-┃ ┃ ┣ 📜 Cart.js
-┃ ┃ ┣ 📜 CartItem.js
-┃ ┃ ┣ 📜 RestaurantMenu.js
-┃ ┃ ┗ 📜 ...
-┃ ┣ 📂 utils
-┃ ┃ ┣ 📜 cartSlice.js
-┃ ┃ ┗ 📜 store.js
-┃ ┗ 📜 index.js
-┣ 📜 package.json
-┣ 📜 tailwind.config.js
-┣ 📜 index.html
-┗ 📜 README.md
-
 📚 What I Learned
 
 - Fetching live API data in React
