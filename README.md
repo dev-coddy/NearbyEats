@@ -1,32 +1,32 @@
-# 🍴 React Restaurant App
+# 🍽️ NearbyEats
 
-A simple React app built for learning purposes that mimics Swiggy’s restaurant listing and menu display using API-style network calls.
+**NearbyEats** is a frontend project built with **React, Redux Toolkit, TailwindCSS, and React Router**.  
+It fetches **real-time restaurant and menu data from a live API** and displays them beautifully.
+
+🚀 **Live Demo:** [NearbyEats on Vercel](https://nearbyeats.vercel.app/)
 
 ---
 
-## 🚀 Features
+## ✨ Features
 
-- Browse nearby restaurants
-- View restaurant menus
-- See ratings, prices, and delivery times
-- Clean UI using plain CSS
-- Built with React and Parcel
+- 📍 Browse nearby restaurants (fetched from live API)
+- 📋 View restaurant menu items dynamically
+- ➕ Add items to cart
+- ❌ Clear the entire cart with one click
+- 🛒 Cart page showing total items
+- 🎨 Responsive UI with TailwindCSS
 
 ---
 
 ## 🛠️ Tech Stack
 
-- React (Frontend)
-- CSS (Styling)
-- Parcel (Bundler)
-- JavaScript (Logic)
+- ⚛️ **React** (hooks & functional components)
+- 🛣️ **React Router DOM** – client-side routing
+- 📦 **Redux Toolkit + React-Redux** – global state management
+- 🎨 **TailwindCSS** – styling
+- 📦 **Parcel** – bundler
+- 🌍 **Vercel** – deployment
 
 ---
 
-## 📦 Getting Started
-
-```bash
-git clone https://github.com/your-username/restaurant-app.git
-cd restaurant-app
-npm install
-npm start
+## 📂 Project Structure
