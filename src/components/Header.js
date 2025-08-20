@@ -20,11 +20,11 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center ">
       <div className="w-1/4">
         <img className="ml-12 h-36" src={LOGO_URL} />
       </div>
-      <div className="w-3/4 flex items-center justify-around mr-3.5">
+      <div className="w-3/4 flex items-center mr-6 gap-20">
         <ul className=" mx-auto p-2 flex gap-20 cursor-pointer">
           <li>{onlineStatus ? "Online Status : ✅" : "Online Status : ❌"}</li>
           <li onClick={() => handleClick("/")}>Home</li>
@@ -44,6 +44,7 @@ const Header = () => {
         >
           {loginStatus ? "Logout" : "Login"}
         </button>
+        {loggedInUser && <p>{loggedInUser}</p>}
       </div>
     </div>
   );
